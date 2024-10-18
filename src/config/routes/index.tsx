@@ -1,14 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import App from "../../App";
 import { MainLayout } from "../../layout/MainLayout";
 import { Home } from "../../features/Home/Home";
 import { History } from "../../features/history/History";
 import { Mood } from "../../features/mood/Mood";
+import { Authentication } from "../../features/auth/Authentication";
 
 export const AppRoutes = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="auth" element={<App />} />
+      <Route path="auth" element={<Authentication />} />
     </Routes>
 
     <Routes>
