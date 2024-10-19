@@ -1,6 +1,17 @@
-import { DetailHappiness } from "./DetailHappiness";
+import { DetailMood } from "./DetailHappiness";
 import { DetailRecently } from "./DetailRecently";
-import { DetailSadness } from "./DetailSadness";
+
+const recentHappinessEntries = [
+  "Bien - familia - hemos pasado un gran momento juntos",
+  "Excelente - trabajo - logré finalizar el proyecto",
+  "Bien - salud - me siento más enérgico",
+];
+
+const recentSadnessEntries = [
+  "Mal - trabajo - tuve un desacuerdo con mi jefe",
+  "Triste - salud - no me siento bien físicamente",
+  "Decepcionado - amigos - una discusión me afectó",
+];
 
 export const ResumeCountDetail = () => {
   return (
@@ -9,8 +20,8 @@ export const ResumeCountDetail = () => {
       className="w-full h-full rounded-lg flex flex-col justify-between"
     >
       <DetailRecently />
-      <DetailHappiness />
-      <DetailSadness />
+      <DetailMood mood="happiness" recentEntries={recentHappinessEntries} />
+      <DetailMood mood="sadness" recentEntries={recentSadnessEntries} />
     </div>
   );
 };
