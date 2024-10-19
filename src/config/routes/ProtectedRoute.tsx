@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth } from "../../hooks/auth.hook";
+import { useAuth } from "../../common/hooks/auth.hook";
 import { Navigate } from "react-router-dom";
 
 export const ProtectedRoute: React.FC<React.PropsWithChildren> = ({

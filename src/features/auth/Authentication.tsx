@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { google } from "../../assets";
-import { useAuth } from "../../hooks/auth.hook";
+import { useAuth } from "../../common/hooks/auth.hook";
 
 export const Authentication = () => {
   const { signInWithGoogle, isLoading, isError } = useAuth();

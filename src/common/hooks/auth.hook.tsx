@@ -1,8 +1,13 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { firebaseAuth } from "../config/firebase/firebase";
-import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { firebaseAuth } from "../../config/firebase/firebase";
+import {
+  GoogleAuthProvider,
+  User,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
 
-const verifyAuth = async () => {
+const verifyAuth = async (): Promise<User | null> => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(firebaseAuth.currentUser);
@@ -17,7 +22,7 @@ export const useAuth = () => {
     data: user,
     isLoading,
     isError,
-  } = useQuery({
+  } = useQuery<User | null>({
     queryKey: ["auth"],
     queryFn: verifyAuth,
     refetchOnWindowFocus: false,
