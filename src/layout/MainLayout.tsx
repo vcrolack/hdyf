@@ -1,12 +1,13 @@
-import { Footer } from "./Footer";
+import { Outlet } from "react-router-dom";
 import { Header } from "./header/Header";
 
 export const MainLayout = () => {
   return (
     <>
       <Header />
-      <div>Main Layout</div>
-      <Footer />
+      <main className="w-full h-[900px] flex justify-center pt-16">
+        <Outlet />
+      </main>
     </>
   );
 };
