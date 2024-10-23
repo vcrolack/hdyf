@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { Header } from "./header/Header";
 import { Wrapper } from "../common/components/Wrapper";
 import { Hero } from "../common/components/Hero";
+import { RegisterEntry } from "../features/register-entry/RegisterEntry";
 
 export const MainLayout = () => {
   return (
@@ -14,6 +15,7 @@ export const MainLayout = () => {
             <Outlet />
           </Wrapper>
         </div>
+        <RegisterEntry />
       </main>
     </>
   );

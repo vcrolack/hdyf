@@ -2,3 +2,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input[type="range"] {
+  -webkit-appearance: none; /* Remueve el estilo predeterminado en navegadores WebKit */
+  width: 50%;
+  height: 25px; /* Altura de la barra */
+  background: #ddd; /* Color de fondo de la barra */
+  border-radius: 60px;
+  outline: none;
+  opacity: 0.7; /* Transparencia */
+  transition: opacity 0.2s ease;
+}
+
+input[type="range"]:hover {
+  opacity: 1; /* Opacidad total al hacer hover */
+}
+
+/* Personaliza el "pulgar" o thumb del slider */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px; /* Tamaño del thumb */
+  height: 20px;
+  border-radius: 50%;
+  background: #4f46e5; /* Color del thumb (utilizando un color Tailwind) */
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4f46e5;
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
