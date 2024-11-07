@@ -1,21 +1,27 @@
 import React from "react";
 
 interface DetailMood {
-  mood: "sadness" | "happiness";
+  mood: "sadness" | "neutral" | "happiness";
   recentEntries: string[];
 }
 
 export const DetailMood: React.FC<DetailMood> = ({ mood, recentEntries }) => {
-  const moodComponent = mood === "happiness" ? "Happiness" : "Sadness";
   const entryColor =
-    mood === "happiness" ? "border-color-secondary" : "border-introspection";
+    mood === "happiness"
+      ? "border-color-secondary"
+      : mood === "neutral"
+      ? "border-gray"
+      : "border-introspection";
   return (
     <div
       id="resume-count-detail-mood"
       className="w-full h-1/4 p-4 bg-color-primary-hover rounded-lg"
     >
       <div id="detail-mood-title">
-        <p className="font-bold text-lg">{moodComponent} Entries</p>
+        <p className="font-bold text-lg">
+          {mood.charAt(0).toUpperCase() + mood.slice(1).toLocaleLowerCase()}{" "}
+          Entries
+        </p>
       </div>
       <div id="detail-mood-resume" className="flex items-center ">
         <div

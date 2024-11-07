@@ -1,15 +1,12 @@
 import React from "react";
 import { Modal } from "../../common/components";
 import { MoodForm } from "./components/MoodForm/MoodForm";
+import { FormProvider } from "../../state/contexts/form.context";
 
 export const RegisterEntry = () => {
-  const [isModalOpen, setIsModalOpen] = React.useState<boolean>(true);
+  const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
 
   const handleModal = () => setIsModalOpen(!isModalOpen);
-
-  React.useEffect(() => {
-    setIsModalOpen(true); // Esto puede causar un bucle si no está adecuadamente controlado
-  }, []);
 
   return (
     <div className="relative min-h-screen">
@@ -25,7 +22,9 @@ export const RegisterEntry = () => {
         isOpen={isModalOpen}
         onClose={handleModal}
       >
-        <MoodForm />
+        <FormProvider>
+          <MoodForm />
+        </FormProvider>
       </Modal>
     </div>
   );

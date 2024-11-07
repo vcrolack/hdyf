@@ -10,7 +10,9 @@ export const Emotions = () => {
 
   return (
     <div>
-      <label htmlFor="emotions-checkbox"></label>
+      {neutral.neutralEmotions!.map((neutralin) => {
+        return <p>{neutralin}</p>;
+      })}
     </div>
   );
 };
