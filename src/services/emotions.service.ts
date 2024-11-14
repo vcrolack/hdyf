@@ -3,6 +3,7 @@ import {
   addDoc,
   collection,
   doc,
+  getCountFromServer,
   getDocs,
   query,
   setDoc,
@@ -56,7 +57,7 @@ export const createNewEntry = async (
 };
 
 export const getEntries = async (
-  generalMood: GeneralMood
+  generalMood?: GeneralMood
 ): Promise<Entry[]> => {
   if (!firebaseAuth.currentUser) throw new Error("User is not authenticated");
 
@@ -73,4 +74,18 @@ export const getEntries = async (
 
   console.log(entries);
   return entries;
+};
+
+export const getCountTotalEntries = async () => {
+  if (!firebaseAuth.currentUser) throw new Error("User is not authenticated");
+
+  const entriesCollectionRef = collection(
+    db,
+    `moodEntries/${firebaseAuth.currentUser.uid}/entries`
+  );
+
+  const q = query(entriesCollectionRef);
+
+  const snapshot = await getCountFromServer(q);
+  return snapshot.data().count;
 };

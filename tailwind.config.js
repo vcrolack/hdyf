@@ -20,6 +20,15 @@ export default {
       textColor: {
         DEFAULT: "#FFFFFF",
       },
+      keyframes: {
+        loadingWave: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
+      },
+      animation: {
+        loadingWave: "loadingWave 1.5s infinite linear",
+      },
     },
   },
   plugins: [],

@@ -2,8 +2,10 @@ import { Details, Emotions, MoodSlider } from "./components";
 import { useFormContext } from "../../../../state/contexts/form.hook";
 import { FormState } from "../../../../common/interfaces/form-state.interface";
 import { useAddEntry } from "../../hooks/add-document.hook";
+import { useQueryClient } from "@tanstack/react-query";
 
 export const MoodForm = () => {
+  const queryClient = useQueryClient();
   const {
     step,
     nextStep,
@@ -27,7 +29,15 @@ export const MoodForm = () => {
     };
 
     mutation.mutate(newEntry, {
-      onSuccess: () => handleCloseModal(),
+      onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: [`${generalMood}-entries`],
+        });
+        queryClient.invalidateQueries({
+          queryKey: ["total-entries"],
+        });
+        handleCloseModal();
+      },
     });
   };
 

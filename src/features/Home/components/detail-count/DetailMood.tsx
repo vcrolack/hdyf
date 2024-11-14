@@ -1,8 +1,9 @@
 import React from "react";
+import { Entry } from "../../../../common/interfaces/entry.interface";
 
 interface DetailMood {
   mood: "sadness" | "neutral" | "happiness";
-  recentEntries: any[];
+  recentEntries: Entry[];
 }
 
 export const DetailMood: React.FC<DetailMood> = ({ mood, recentEntries }) => {
@@ -28,14 +29,18 @@ export const DetailMood: React.FC<DetailMood> = ({ mood, recentEntries }) => {
           id="detail-mood-count"
           className="w-1/4  h-full text-4xl flex justify-center"
         >
-          <p>5</p>
+          <p>{recentEntries?.length ?? 0}</p>
         </div>
         <div id="detail-mood-last">
-          {recentEntries.map((entry, index) => (
-            <p key={index} className={`border-l-4 pl-1 ${entryColor}`}>
-              {entry}
-            </p>
-          ))}
+          {recentEntries?.length ? (
+            recentEntries?.slice(-3).map((entry, index) => (
+              <p key={index} className={`border-l-4 pl-1 ${entryColor}`}>
+                {entry.specifyMood} - {entry.details}
+              </p>
+            ))
+          ) : (
+            <p>No hay entradas para esta sección</p>
+          )}
           <p className="pl-1 underline">ver más momentos...</p>
         </div>
       </div>
