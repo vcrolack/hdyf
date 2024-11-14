@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "../../common/hooks/auth.hook";
 import { Navigate } from "react-router-dom";
+import { SkeletonLayout } from "../../common/components";
 
 export const ProtectedRoute: React.FC<React.PropsWithChildren> = ({
   children,
@@ -8,7 +9,7 @@ export const ProtectedRoute: React.FC<React.PropsWithChildren> = ({
   const { user, isLoading } = useAuth();
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <SkeletonLayout />;
   }
 
   if (!user) {

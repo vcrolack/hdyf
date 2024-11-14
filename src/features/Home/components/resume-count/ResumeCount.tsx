@@ -1,5 +1,5 @@
 import { Skeleton } from "../../../../common/components/Skeleton";
-import { useGetCountTotalEntries } from "../../../../services/hooks/getCountTotalEntries";
+import { useGetCountTotalEntries } from "../../../../services/hooks/getCountTotalEntries.hook";
 
 export const ResumeCount = () => {
   const { data: countEntries, isFetching } = useGetCountTotalEntries();

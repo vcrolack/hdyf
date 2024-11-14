@@ -89,3 +89,34 @@ export const getCountTotalEntries = async () => {
   const snapshot = await getCountFromServer(q);
   return snapshot.data().count;
 };
+
+export const getAverageMood = async (): Promise<GeneralMood> => {
+  const moodValues: Record<GeneralMood, number> = {
+    bad: 1,
+    neutral: 2,
+    good: 3,
+  };
+
+  if (!firebaseAuth.currentUser) throw new Error("User is not authenticated");
+
+  const entriesCollectionRef = collection(
+    db,
+    `moodEntries/${firebaseAuth.currentUser.uid}/entries`
+  );
+  const querySnapshot = await getDocs(entriesCollectionRef);
+
+  let totalMoodValue = 0;
+  let count = 0;
+
+  querySnapshot.forEach((doc) => {
+    const mood = doc.data().generalMood as GeneralMood;
+    totalMoodValue += moodValues[mood];
+    count += 1;
+  });
+
+  const averageMoodValue = totalMoodValue / count;
+  console.log(averageMoodValue);
+  if (averageMoodValue <= 1.5) return "bad";
+  if (averageMoodValue <= 2.5) return "neutral";
+  return "good";
+};

@@ -33,7 +33,7 @@ export const DetailMood: React.FC<DetailMood> = ({ mood, recentEntries }) => {
         </div>
         <div id="detail-mood-last">
           {recentEntries?.length ? (
-            recentEntries?.slice(-3).map((entry, index) => (
+            recentEntries?.slice(0, 3).map((entry, index) => (
               <p key={index} className={`border-l-4 pl-1 ${entryColor}`}>
                 {entry.specifyMood} - {entry.details}
               </p>
