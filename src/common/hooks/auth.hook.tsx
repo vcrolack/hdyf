@@ -6,6 +6,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const verifyAuth = async (): Promise<User | null> => {
   return new Promise((resolve) => {
@@ -17,6 +18,7 @@ const verifyAuth = async (): Promise<User | null> => {
 
 export const useAuth = () => {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const {
     data: user,
@@ -42,7 +44,8 @@ export const useAuth = () => {
 
   const logout = async () => {
     await signOut(firebaseAuth);
-    queryClient.setQueryData(["auth"], null);
+    queryClient.clear();
+    navigate("/auth");
   };
 
   return {

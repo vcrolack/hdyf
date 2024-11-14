@@ -5,3 +5,4 @@ export * from "./Wrapper";
 export * from "./Modal";
 export * from "./Skeleton";
 export * from "./SkeletonLayout";
+export * from "./Soon";

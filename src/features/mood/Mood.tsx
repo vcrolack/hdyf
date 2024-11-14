@@ -1,3 +1,9 @@
+import { Soon } from "../../common/components";
+
 export const Mood = () => {
-  return <div>Mood</div>;
+  return (
+    <div className="w-full h-full">
+      <Soon />
+    </div>
+  );
 };
