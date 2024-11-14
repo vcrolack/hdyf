@@ -2,7 +2,7 @@ import React from "react";
 
 interface DetailMood {
   mood: "sadness" | "neutral" | "happiness";
-  recentEntries: string[];
+  recentEntries: any[];
 }
 
 export const DetailMood: React.FC<DetailMood> = ({ mood, recentEntries }) => {

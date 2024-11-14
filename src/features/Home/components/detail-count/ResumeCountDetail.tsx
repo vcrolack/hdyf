@@ -1,3 +1,4 @@
+import { useGetGoodEntries } from "../../../../services/hooks/getGoodEntries.hook";
 import { DetailMood } from "./DetailMood";
 import { DetailRecently } from "./DetailRecently";
 
@@ -20,6 +21,8 @@ const recentSadnessEntries = [
 ];
 
 export const ResumeCountDetail = () => {
+  const { data: goodEntries } = useGetGoodEntries();
+
   return (
     <div
       id="resume-count-detail"

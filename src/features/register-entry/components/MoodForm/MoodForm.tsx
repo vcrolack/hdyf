@@ -32,7 +32,7 @@ export const MoodForm = () => {
   };
 
   return (
-    <form action="">
+    <form>
       {mutation.isPending ? (
         "Adding new entry..."
       ) : (
