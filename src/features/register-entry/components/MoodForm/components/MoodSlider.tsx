@@ -30,8 +30,7 @@ const labels = [
 ];
 
 export const MoodSlider = () => {
-  const { setGeneralMood, setSpecifyMood, specifyMood, generalMood } =
-    useFormContext();
+  const { setGeneralMood, setSpecifyMood, specifyMood } = useFormContext();
   const [value, setValue] = React.useState<number>(2);
 
   const getDisplayValue = (value: number) => {
@@ -66,9 +65,6 @@ export const MoodSlider = () => {
       setGeneralMood("good");
       setSpecifyMood("very good");
     }
-
-    console.log({ generalMood, specifyMood });
-    console.log(newValue);
   };
 
   const displayValue = getDisplayValue(value);

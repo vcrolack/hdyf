@@ -1,15 +1,47 @@
-import { Emotions, MoodSlider } from "./components";
+import { Details, Emotions, MoodSlider } from "./components";
 import { useFormContext } from "../../../../state/contexts/form.hook";
+import { FormState } from "../../../../common/interfaces/form-state.interface";
+import { useAddEntry } from "../../hooks/add-document.hook";
 
 export const MoodForm = () => {
-  const { step, nextStep, previousStep } = useFormContext();
+  const {
+    step,
+    nextStep,
+    previousStep,
+    specifyMood,
+    generalMood,
+    selectedEmotions,
+    details,
+    handleCloseModal,
+  } = useFormContext();
+  const mutation = useAddEntry();
 
   const maxStep = 2;
 
+  const handleSubmit = () => {
+    const newEntry: FormState = {
+      generalMood: generalMood,
+      specifyMood: specifyMood,
+      emotions: selectedEmotions,
+      details: details,
+    };
+
+    mutation.mutate(newEntry, {
+      onSuccess: () => handleCloseModal(),
+    });
+  };
+
   return (
     <form action="">
-      {step === 0 && <MoodSlider />}
-      {step === 1 && <Emotions />}
+      {mutation.isPending ? (
+        "Adding new entry..."
+      ) : (
+        <div>
+          {step === 0 && <MoodSlider />}
+          {step === 1 && <Emotions />}
+          {step === 2 && <Details />}
+        </div>
+      )}
 
       <div className="my-10 flex justify-around">
         <button
@@ -20,13 +52,23 @@ export const MoodForm = () => {
         >
           Back
         </button>
-        <button
-          onClick={nextStep}
-          type="button"
-          className="bg-color-secondary p-2 rounded-lg hover:brightness-110 active:brightness-95"
-        >
-          {step === maxStep ? "Submit" : "Continue"}
-        </button>
+        {step === maxStep ? (
+          <button
+            onClick={handleSubmit}
+            type="button"
+            className="bg-color-secondary p-2 rounded-lg hover:brightness-110 active:brightness-95"
+          >
+            Submit
+          </button>
+        ) : (
+          <button
+            onClick={nextStep}
+            type="button"
+            className="bg-color-secondary p-2 rounded-lg hover:brightness-110 active:brightness-95"
+          >
+            Continue
+          </button>
+        )}
       </div>
     </form>
   );

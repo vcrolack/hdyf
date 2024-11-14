@@ -3,6 +3,7 @@ import { Header } from "./header/Header";
 import { Wrapper } from "../common/components/Wrapper";
 import { Hero } from "../common/components/Hero";
 import { RegisterEntry } from "../features/register-entry/RegisterEntry";
+import { FormProvider } from "../state/contexts/form.context";
 
 export const MainLayout = () => {
   return (
@@ -15,7 +16,9 @@ export const MainLayout = () => {
             <Outlet />
           </Wrapper>
         </div>
-        <RegisterEntry />
+        <FormProvider>
+          <RegisterEntry />
+        </FormProvider>
       </main>
     </>
   );
