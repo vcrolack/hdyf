@@ -1,5 +1,4 @@
 import {
-  QuerySnapshot,
   addDoc,
   collection,
   doc,
@@ -66,13 +65,12 @@ export const getEntries = async (
     where("generalMood", "==", generalMood)
   );
   const querySnapshot = await getDocs(q);
-  console.log("object");
+
   const entries = querySnapshot.docs.map((entry) => ({
     id: entry.id,
     ...entry.data(),
   })) as Entry[];
 
-  console.log(entries);
   return entries;
 };
 
@@ -115,7 +113,7 @@ export const getAverageMood = async (): Promise<GeneralMood> => {
   });
 
   const averageMoodValue = totalMoodValue / count;
-  console.log(averageMoodValue);
+
   if (averageMoodValue <= 1.5) return "bad";
   if (averageMoodValue <= 2.5) return "neutral";
   return "good";

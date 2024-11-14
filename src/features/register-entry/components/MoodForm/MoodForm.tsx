@@ -36,6 +36,7 @@ export const MoodForm = () => {
         queryClient.invalidateQueries({
           queryKey: ["total-entries"],
         });
+        queryClient.invalidateQueries({ queryKey: ["average-mood"] });
         handleCloseModal();
       },
     });
