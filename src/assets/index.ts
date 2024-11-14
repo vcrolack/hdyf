@@ -3,6 +3,7 @@ import logo from "./img/brand/logo.png";
 
 // icons/common
 import google from "./icons/common/google.svg";
-// img
+// img/ilustrations
+import soon from "./img/ilustrations/soon.svg";
 
-export { logo, google };
+export { logo, google, soon };

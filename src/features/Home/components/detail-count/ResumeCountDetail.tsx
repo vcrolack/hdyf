@@ -24,7 +24,7 @@ export const ResumeCountDetail = () => {
       {isFetchingGoodEntries ? (
         <Skeleton className="w-full h-[160px]" />
       ) : (
-        <DetailMood mood="happiness" recentEntries={goodEntries ?? []} />
+        <DetailMood mood="good" recentEntries={goodEntries ?? []} />
       )}
       {isFetchingNeutralEntries ? (
         <Skeleton className="w-full h-[160px]" />
@@ -34,7 +34,7 @@ export const ResumeCountDetail = () => {
       {isFetchingBadEntries ? (
         <Skeleton className="w-full h-[160px]" />
       ) : (
-        <DetailMood mood="sadness" recentEntries={badEntries ?? []} />
+        <DetailMood mood="bad" recentEntries={badEntries ?? []} />
       )}
     </div>
   );

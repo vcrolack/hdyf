@@ -1,3 +1,9 @@
+import { Soon } from "../../common/components";
+
 export const History = () => {
-  return <div>History</div>;
+  return (
+    <div className="w-full h-full">
+      <Soon />
+    </div>
+  );
 };
